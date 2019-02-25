@@ -50,6 +50,16 @@ resource "azurerm_eventhub" "demo_eh" {
   resource_group_name = "${azurerm_resource_group.demo_rg.name}"
   partition_count     = 2
   message_retention   = 1
+  capture_description {
+    enabled = true
+    encoding = "AvroDeflate"
+    destination {
+      name                 = "EventHubArchive.AzureBlockBlob"
+      archive_name_format  = "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}"
+      blob_container_name  = "${azurerm_storage_blob.demo_blob.name}"
+      storage_account_id   = "${azurerm_storage_account.demo_sa.id}"
+    }
+  }
 }
 
 resource "azurerm_eventhub_authorization_rule" "demo_auth_rule" {
