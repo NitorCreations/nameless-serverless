@@ -1,0 +1,8 @@
+backend.tf
+terraform.tfvars
+terraform.tfstate
+terrafomr.tfstate.backup
+.terraform
+serverless.yml
+variables.json
+variables.yml
