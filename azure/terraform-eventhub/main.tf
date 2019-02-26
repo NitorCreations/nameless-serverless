@@ -1,10 +1,10 @@
-resource "azurerm_resource_group" "demo_rg" {
-  name     = "demoRG"
-  location = "westeurope"
-}
-
 variable "paramEnvId" {
   type = "string"
+}
+
+resource "azurerm_resource_group" "demo_rg" {
+  name     = "demoRG-${var.paramEnvId}"
+  location = "westeurope"
 }
 
 resource "azurerm_storage_account" "demo_sa" {
