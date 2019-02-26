@@ -10,7 +10,7 @@ variable "paramEnvId" {
 resource "azurerm_storage_account" "demo_sa" {
   name                     = "demosa${var.paramEnvId}"
   resource_group_name      = "${azurerm_resource_group.demo_rg.name}"
-  location                 = "westus"
+  location                 = "westeurope"
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
